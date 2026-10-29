@@ -112,22 +112,19 @@ from langchain_openai import ChatOpenAI
 
 # 3. Load the JSON file and extract values; the file should be in the root folder once the Files button is clicked to show file/folder explorer.
 # 10/29/26 replace original code opening config.json with Streamlit's built-in secrets.
+
 # Securely fetch keys from Streamlit (or your local backup)
 if "OPENAI_API_KEY" in st.secrets:
-    # This runs when deployed live on Streamlit Cloud
     openai_api_key = st.secrets["OPENAI_API_KEY"]
 else:
-    # Fallback to local environment variable if running locally
     openai_api_key = os.getenv("OPENAI_API_KEY")
 
-# Pass the key directly to your LangChain LLM instance
+# Fix: Initialize a true OpenAI client object instead of ChatOpenAI
 if openai_api_key:
-    client = ChatOpenAI(
-        model="gpt-4o-mini",  # or your preferred model
-        api_key=openai_api_key
-    )
+    client = OpenAI(api_key=openai_api_key)
 else:
     st.error("Missing OpenAI API Key! Please configure it in your settings.")
+    st.stop()
 
 
 """### Question 1: Who are the authors of this article and who published this article?"""
