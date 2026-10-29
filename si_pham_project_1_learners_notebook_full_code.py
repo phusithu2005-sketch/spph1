@@ -794,7 +794,9 @@ print("\n" + "="*50 + "\n")
 # 4. Display a few sample records using pandas DataFrame
 print("--- Sample Records (First 3 Pages) ---")
 # Using display() works natively in Google Colab for beautiful table rendering
-display(df.head(3))
+# display(df.head(3)) #10/29/26 this only works in Google Colab but not in Streamlit. 
+# To this Streamlit native line:
+st.dataframe(df.head(3))
 
 # 18. Inspect metadata keys of this document
 
@@ -802,10 +804,19 @@ print("Available metadata keys on page 1:", manual[0].metadata.keys())
 
 # 19. Highlight short or empty pages
 
-#In a RAG pipeline, pages containing figures, images, or minimal text (like front covers) can generate noisy or empty embeddings. You can isolate pages with fewer than 100 characters
+# In a RAG pipeline, pages containing figures, images, or minimal text (like front covers) can generate noisy or empty embeddings. You can isolate pages with fewer than 100 characters
 low_text_pages = df[df['text_character_length'] < 100]
-print(f"Found {len(low_text_pages)} pages with very short text content.")
-display(low_text_pages[['page_number', 'text_character_length']])
+
+# Replace print() with st.write() or st.metric()
+st.write(f"**Found {len(low_text_pages)} pages with very short text content.**")
+
+# Replace display() with st.dataframe()
+if not low_text_pages.empty:
+    st.dataframe(low_text_pages[['page_number', 'text_character_length']])
+else:
+    st.success("No noisy or low-text pages found! Your document looks clean.")
+
+
 
 """### Data Chunking"""
 
