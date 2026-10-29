@@ -56,9 +56,11 @@ Through this solution, analysts can save time, improve productivity, and make fa
 # 2. Import core python libraries
 
 import os
+import streamlit as st
 import json
 import re
 from pydantic import BaseModel, Field
+
 
 # Data handling and tokenization
 import pandas as pd
@@ -109,25 +111,24 @@ from langchain_openai import ChatOpenAI
 """
 
 # 3. Load the JSON file and extract values; the file should be in the root folder once the Files button is clicked to show file/folder explorer.
+# 10/29/26 replace original code opening config.json with Streamlit's built-in secrets.
+# Securely fetch keys from Streamlit (or your local backup)
+if "OPENAI_API_KEY" in st.secrets:
+    # This runs when deployed live on Streamlit Cloud
+    openai_api_key = st.secrets["OPENAI_API_KEY"]
+else:
+    # Fallback to local environment variable if running locally
+    openai_api_key = os.getenv("OPENAI_API_KEY")
 
-# Name of the configuration file
-file_name = '/content/config.json'
-# Open the config file in read mode
-with open(file_name, 'r') as file:
-    # Load the JSON content as a dictionary
-    config = json.load(file)
-    # Extract the OpenAI API Key from the config
-    OPENAI_API_KEY = config.get("OPENAI_API_KEY")
-    # Extract Extract the OpenAI base URL from the config
-    OPENAI_API_BASE = config.get("OPENAI_API_BASE")
+# Pass the key directly to your LangChain LLM instance
+if openai_api_key:
+    client = ChatOpenAI(
+        model="gpt-4o-mini",  # or your preferred model
+        api_key=openai_api_key
+    )
+else:
+    st.error("Missing OpenAI API Key! Please configure it in your settings.")
 
-# Store API key as environment variable
-os.environ['OPENAI_API_KEY'] = OPENAI_API_KEY
-# Set envionrment variable to store API base URL
-os.environ["OPENAI_BASE_URL"] = OPENAI_API_BASE
-
-# Create and initialize an instance of the OpenAI client
-client = OpenAI()
 
 """### Question 1: Who are the authors of this article and who published this article?"""
 
