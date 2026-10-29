@@ -38,14 +38,15 @@ Through this solution, analysts can save time, improve productivity, and make fa
 """
 
 # 1. Install required libraries
-!pip install -q langchain_community==0.3.27 \
-              langchain==0.3.27 \
-              chromadb==1.0.15 \
-              pymupdf==1.26.3 \
-              tiktoken==0.9.0 \
-              datasets==4.0.0 \
-              evaluate==0.4.5 \
-              langchain_openai==0.3.30
+# 10/29/26 comment out this code cell; Streamlit uses requirements.txt to install dependencies
+#!pip install -q langchain_community==0.3.27 \
+#              langchain==0.3.27 \
+#              chromadb==1.0.15 \
+#              pymupdf==1.26.3 \
+#              tiktoken==0.9.0 \
+#              datasets==4.0.0 \
+#              evaluate==0.4.5 \
+#              langchain_openai==0.3.30
 
 """**Note**:
 - After running the above cell, kindly restart the runtime (for Google Colab) or notebook kernel (for Jupyter Notebook), and run all cells sequentially from the next cell.
