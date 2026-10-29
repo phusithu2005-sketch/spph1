@@ -64,7 +64,9 @@ from pydantic import BaseModel, Field
 import pandas as pd
 
 # Used for Data Overview of pdf contents loaded before chunkings and embedding
-import matplotlib.pyplot as plt
+# 10/29/26 comment out this import because Streamlit complains about matplotlib is imported but module not found;
+# originally i had a code cell in section Data Overview to use matplotlib to visualize the pdf contents loaded before chunkings and embedding, but i removed that code cell because Streamlit complains about matplotlib is imported but module not found; so i commented out this import as well
+# import matplotlib.pyplot as plt
 
 import tiktoken
 
