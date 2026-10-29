@@ -723,7 +723,9 @@ When temperature is 0.1, the answer is best since LLM says it does not have enou
 """
 
 # 16. Set the path to the PDF file
-manual_pdf_path = "/content/HBR_How_Apple_Is_Organized_For_Innovation.pdf"
+# 10/29/2026 comment out original path which works with Google Colab but does not work with Streamlit.
+# manual_pdf_path = "/content/HBR_How_Apple_Is_Organized_For_Innovation.pdf"
+manual_pdf_path = "HBR_How_Apple_Is_Organized_For_Innovation.pdf"
 # Initialize the PDF loader with the file path
 pdf_loader = PyMuPDFLoader(manual_pdf_path)
 # Load and extract text from all pages of the PDF
