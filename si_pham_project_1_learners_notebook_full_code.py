@@ -1164,6 +1164,5 @@ Answers can be different.
 
 - For production RAG, parameter temperature for LLM to generate response should be capped at 1 and should not go beyond 1 to avoid "hallucination" when temperature is more than 1. In addition, top_p should be near max value 1.
 
-<font size=6 color='#4682B4'>Power Ahead</font>
 ___
 """
