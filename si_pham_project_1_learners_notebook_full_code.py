@@ -843,8 +843,8 @@ for chunk in (document_chunks):
 
 # 24. Initialize the OpenAI Embeddings model with API credentials
 embedding_model = OpenAIEmbeddings(
-    openai_api_key=OPENAI_API_KEY,                                                     # Your OpenAI API key for authentication
-    openai_api_base=OPENAI_API_BASE                                             # The OpenAI API base URL endpoint
+    openai_api_key=openai_api_key #see code cell # 3                                                     # Your OpenAI API key for authentication
+    #openai_api_base=OPENAI_API_BASE                                             # The OpenAI API base URL endpoint
 )
 
 # Generate embeddings (vector representations) for the first document chunks
@@ -1013,12 +1013,12 @@ result_df = pd.DataFrame({
     "prompt_eng_response": [response1_with_rag, response2_with_rag, response2_with_rag]})
 
 # Display the DataFrame
-# 1. Prevent Pandas from truncating long strings
+# Prevent Pandas from truncating long strings
 pd.set_option('display.max_colwidth', None)
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 
-# 2. Apply CSS styles AND fix the decimal precision formatting
+# Apply CSS styles AND fix the decimal precision formatting
 styled_df = result_df.head().style.format(precision=2).set_table_styles([
     # Force table to utilize full width space
     {'selector': 'table', 'props': [('width', '100%'), ('table-layout', 'auto')]},
@@ -1026,7 +1026,7 @@ styled_df = result_df.head().style.format(precision=2).set_table_styles([
     {'selector': 'th, td', 'props': [('white-space', 'normal'), ('word-wrap', 'break-word'), ('text-align', 'left'), ('padding', '8px')]}
 ])
 
-# 3. Render the table
+# Render the table
 styled_df
 
 """**Observation**
@@ -1071,12 +1071,12 @@ result_df = pd.DataFrame({
     "prompt_eng_response": [response1_with_rag, response2_with_rag, response2_with_rag]})
 
 # Display the DataFrame
-# 1. Prevent Pandas from truncating long strings
+# Prevent Pandas from truncating long strings
 pd.set_option('display.max_colwidth', None)
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 
-# 2. Apply CSS styles AND fix the decimal precision formatting
+# Apply CSS styles AND fix the decimal precision formatting
 styled_df = result_df.head().style.format(precision=2).set_table_styles([
     # Force table to utilize full width space
     {'selector': 'table', 'props': [('width', '100%'), ('table-layout', 'auto')]},
@@ -1129,12 +1129,12 @@ result_df = pd.DataFrame({
     "prompt_eng_response": [response1_with_rag, response2_with_rag, response2_with_rag]})
 
 # Use Pandas styler to display result in table
-# 1. Prevent Pandas from truncating long strings
+# Prevent Pandas from truncating long strings
 pd.set_option('display.max_colwidth', None)
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 
-# 2. Apply CSS styles AND fix the decimal precision formatting
+# Apply CSS styles AND fix the decimal precision formatting
 styled_df = result_df.head().style.format(precision=2).set_table_styles([
     # Force table to utilize full width space
     {'selector': 'table', 'props': [('width', '100%'), ('table-layout', 'auto')]},
@@ -1142,7 +1142,7 @@ styled_df = result_df.head().style.format(precision=2).set_table_styles([
     {'selector': 'th, td', 'props': [('white-space', 'normal'), ('word-wrap', 'break-word'), ('text-align', 'left'), ('padding', '8px')]}
 ])
 
-# 3. Render the table
+# Render the table
 styled_df
 
 """**Observation**
