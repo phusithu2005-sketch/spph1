@@ -48,11 +48,6 @@ Through this solution, analysts can save time, improve productivity, and make fa
 #              evaluate==0.4.5 \
 #              langchain_openai==0.3.30
 
-"""**Note**:
-- After running the above cell, kindly restart the runtime (for Google Colab) or notebook kernel (for Jupyter Notebook), and run all cells sequentially from the next cell.
-- On executing the above line of code, you might see a warning regarding package dependencies. This error message can be ignored as the above code ensures that all necessary libraries and their dependencies are maintained to successfully execute the code in ***this notebook***.
-"""
-
 # 2. Import core python libraries
 
 import os
